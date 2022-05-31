@@ -3,9 +3,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient()
 
 
-
-
-exports.productget = async (req, res) => {
+exports.products = async (req, res) => {
     const data = await prisma.product.findMany()
     res.send(data)
 }
@@ -36,8 +34,8 @@ exports.getproductbysellerid = async (req, res) => {
 }
 
 exports.postproduct = async (req, res) => {
-    const { sellerId } = req.params
     try {
+        const { sellerId } = req.params
         const { name, price, description, productImages, isDiscounted, discountPrice, category, inStock } = req.body
         const postProduct = await prisma.product.create(
             {

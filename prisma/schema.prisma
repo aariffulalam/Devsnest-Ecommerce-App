@@ -11,6 +11,26 @@ datasource db {
 }
 
 
+model Product{
+  id Int @id @default(autoincrement())
+  name String @db.VarChar(255)
+  price Int
+  description String
+  photos String[]
+  isDiscounted Boolean @default(false)
+  discountPrice Int @default(0)
+  category String
+  inStock Boolean @default(true)
+  seller Seller @relation(fields: [sellerId], references: [id])
+  sellerId Int
+}
+// https://www.prisma.io/docs/concepts/components/prisma-schema/data-model#defining-composite-types
+// type Photo {
+//   height Int
+//   width  Int
+//   url    String
+// }
+
 
 model Seller{
   id Int @id @default(autoincrement())
@@ -23,20 +43,21 @@ model Seller{
   products Product[]
 }
 
-model Product{
-  id Int @id @default(autoincrement())
-  name String @db.VarChar(255)
-  price Int
-  description String
-  productImsges String[]
-  isDiscounted Boolean @default(false)
-  discountPrice Int @default(0)
-  category String
-  inStock Boolean @default(true)
-  seller Seller @relation(fields: [sellerId], references: [id])
-  sellerId Int
+
+enum Role{
+  USER
+  SELLER
+  ADMIN
 }
 
+model User{ 
+  id Int @id @default(autoincrement())
+  name String
+  phoneNumber String
+  email String @unique
+  password String
+  role Role @default(USER)
+}
 
 // every seller has multiple products 
 // but it is not necessery that in seller table same type of seller will not exist.
