@@ -58,6 +58,3 @@ model User{
   password String
   role Role @default(USER)
 }
-
-// every seller has multiple products 
-// but it is not necessery that in seller table same type of seller will not exist.

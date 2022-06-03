@@ -6,6 +6,8 @@ const prisma = new PrismaClient()
 
 
 exports.getsellers = async (req, res) => {
+    // const { sellerId, userId, productId } = req.params
+    // consol.log(sellerId, userId, productId)
     const data = await prisma.seller.findMany({ include: { products: true } })
     res.send(data)
 }
