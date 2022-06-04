@@ -1,10 +1,33 @@
 const { PrismaClient } = require("@prisma/client");
+const { search } = require("../routes/auth.route");
 
 const prisma = new PrismaClient()
 
-
+// Get all products but using of pagination and also added sortby
 exports.products = async (req, res) => {
-    const data = await prisma.product.findMany()
+    const { limit = 10, offset = 0, sortBy, sortOrder, search } = req.query
+    console.log(`limit : ${limit} & offser : ${offset}, ${search}`)
+    const query = {
+        skip: parseInt(offset),
+        take: parseInt(limit)
+    }
+    if (sortBy && sortBy) {
+        query['orderBy'] = {
+            [sortBy]: sortOrder
+        }
+    }
+    // searching part is not working
+    // if (search) {
+    //     query['where'] = {
+    //         status: 'description',
+    //         body: {
+    //             search: 'pen'
+    //             // description: {
+    //             //     search:
+    //         }
+    //     }
+    // }
+    const data = await prisma.product.findMany(query)
     res.send(data)
 }
 
