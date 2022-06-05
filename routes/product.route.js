@@ -2,18 +2,18 @@ const router = require('express').Router();
 
 const { products, productgetbyid, getproductbysellerid, postproduct, updateproduct, editproduct, deleteproduct } = require('../controller/product.controller')
 
-router.get('/products', products)
+router.get('/', products)
 
-router.get('/product/:id', productgetbyid)
+router.get('/:id', productgetbyid)
 
-router.get('/products/seller/:id', getproductbysellerid)
+router.get('/seller/:sellerId', getproductbysellerid)
 
-router.post('/product', postproduct)
+router.post('/', postproduct)
 
-router.put('/product/:id', updateproduct)
+router.put('/:id', updateproduct)
 
-router.patch('/produt/:id', editproduct)
+router.patch('/:id', editproduct)
 
-router.delete('/product/:id', deleteproduct)
+router.delete('/:id', deleteproduct)
 
 module.exports = router

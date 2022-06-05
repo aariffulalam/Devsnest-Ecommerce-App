@@ -14,6 +14,7 @@ exports.getsellers = async (req, res) => {
 
 exports.getsellerbyid = async (req, res) => {
     const { id } = req.params
+    console.log(id)
     const sellerById = await prisma.seller.findUnique({
         where: {
             id: parseInt(id)

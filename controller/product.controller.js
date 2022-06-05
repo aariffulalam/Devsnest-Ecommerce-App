@@ -1,15 +1,16 @@
 const { PrismaClient } = require("@prisma/client");
-const { search } = require("../routes/auth.route");
-
 const prisma = new PrismaClient()
 
 // Get all products but using of pagination and also added sortby
 exports.products = async (req, res) => {
-    const { limit = 10, offset = 0, sortBy, sortOrder, search } = req.query
+    const { limit = 10, offset = 0, sortBy, sortOrder, search, position } = req.query
     console.log(`limit : ${limit} & offser : ${offset}, ${search}`)
     const query = {
-        skip: parseInt(offset),
-        take: parseInt(limit)
+        // skip: parseInt(offset),         // this will traverse and take us to that position. means i want to reach at 9999 then it will treaverse 9998 after this i will reach to 9999.
+        take: parseInt(limit),
+        cursor: {     //this will take us at the position without traversing
+            id: parseInt(position)
+        }
     }
     if (sortBy && sortBy) {
         query['orderBy'] = {
@@ -43,6 +44,7 @@ exports.productgetbyid = async (req, res) => {
 
 exports.getproductbysellerid = async (req, res) => {
     const { sellerId } = req.params
+    // console.log(sellerId)
     const productGetBySellerId = await prisma.product.findMany({
         where: {
             sellerId: parseInt(sellerId)

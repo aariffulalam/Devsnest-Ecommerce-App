@@ -4,18 +4,18 @@ const { getsellers, getsellerbyid, postseller, updateseller, editseller } = requ
 
 
 // get all sellers
-router.get('/sellers', getsellers);
+router.get('/', getsellers);
 
 // get seller by id
-router.get('/seller/:id', getsellerbyid)
+router.get('/:id', getsellerbyid)
 
 // post seller
-router.post('/seller', postseller)
+router.post('/', postseller)
 
 // post update object seller
-router.patch('/seller/:id', updateseller)
+router.patch('/:id', updateseller)
 
 // edit seller
-router.put('/seller/:id', editseller)
+router.put('/:id', editseller)
 
 module.exports = router;
