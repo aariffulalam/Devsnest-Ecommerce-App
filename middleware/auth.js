@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 const SECRECT_KEY = "hello"
 
 exports.generateToken = (id) => {
-    return jwt.sign(id, SECRECT_KEY)
+    return jwt.sign(id, SECRECT_KEY, { expiresIn: "24h" })
 }
 
 exports.verifyToken = (req, res, next) => {
