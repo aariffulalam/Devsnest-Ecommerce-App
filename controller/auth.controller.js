@@ -88,28 +88,46 @@ exports.verify = async (req, res) => {
 
 exports.login = async (req, res) => {
     const { email, password } = req.body
-    const user = await prisma.user.findUnique({
-        where: {
-            email
-        }
-    })
-    const hashedPassword = md5(password)
-    console.log(hashedPassword)
+    try {
 
-    if (hashedPassword === user.password) {
-        const token = generateToken(user.id)
-        console.log(user.password);
-
-        const updateToken = await prisma.user.update({
+        const user = await prisma.user.findUnique({
             where: {
-                id: user.id
-            },
-            data: {
-                token
+                email
             }
         })
-        res.cookie('authToken', token)
-        res.status(200).json({ status: "Logedin successfully", updateToken })
+        const hashedPassword = md5(password)
+        // console.log(hashedPassword)
+        // console.log(user.password)
+        console.log(hashedPassword === user.password)
+        console.log(user.id)
+        console.log(generateToken(user.id))
+        if (hashedPassword === user.password) {
+            const token = generateToken(user.id)
+            console.log(token)
+            // console.log(user.password);
+
+            const updateToken = await prisma.user.update({
+                where: {
+                    id: user.id
+                },
+                data: {
+                    token
+                }
+            })
+            res.cookie('authToken', token)
+            res.status(200).json({ status: "Logedin successfully", updateToken })
+        } else {
+            res.status(400).json({
+                title: "error",
+                message: "password is wrong."
+            })
+        }
+    }
+    catch (error) {
+        res.status(500).json({
+            title: "error",
+            message: [1, error.message]
+        })
     }
 }
 

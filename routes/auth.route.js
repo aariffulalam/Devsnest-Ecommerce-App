@@ -7,6 +7,7 @@ const { signup, login, logout, verify } = require('../controller/auth.controller
 const { initialUserCheck } = require('../middleware/initialUserCheck')
 const { userExist } = require('../middleware/userExist')
 const { verifyUserCheck } = require('../middleware/verifyUserCheck')
+const { initialLoginCheck } = require('../middleware/initialLoginCheck')
 
 
 
@@ -18,7 +19,7 @@ router.post('/signup', initialUserCheck, userExist, signup)
 router.get('/verify', verifyUserCheck, verify)
 
 // User LogIn
-router.get('/login', login)
+router.get('/login', initialLoginCheck, login)
 
 // User Logout
 router.get('/logout', verifyToken, logout)
