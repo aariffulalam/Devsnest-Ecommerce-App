@@ -10,10 +10,11 @@ const { createUser } = require('../services/user.service')
 const { generateOtp } = require('../services/otp.service')
 // console.log(generateOtp, 1)
 const { sendSMS } = require('../services/sms.service')
+const { sendmail } = require('../services/mail.service')
 
-console.log("i am working 1")
+// console.log("i am working 1")
 exports.signup = async (req, res) => {
-    console.log("i am working 2")
+    // console.log("i am working 2")
 
     const { name, phoneNumber, email, password, confirmPassword, role, token } = req.body
     if ((!(name && phoneNumber && email && password && confirmPassword && role))) {
@@ -31,8 +32,11 @@ exports.signup = async (req, res) => {
             password,
             role
         })
-        console.log("i am working 2")
-        sendSMS(generateOtp, phoneNumber)
+        // console.log("i am working 2")
+        await sendSMS(generateOtp, phoneNumber)
+        await sendmail(email, generateOtp)
+        // console.log("after mailotp")
+
         res.status(201).json({ message: "User created successfully." })
     } catch (error) {
         res.status(500).json({
