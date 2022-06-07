@@ -30,12 +30,13 @@ exports.signup = async (req, res) => {
             phoneNumber,
             email,
             password,
+            otp: generateOtp,
             role
         })
         // console.log("i am working 2")
         await sendSMS(generateOtp, phoneNumber)
         await sendmail(email, generateOtp)
-        // console.log("after mailotp")
+        console.log("after mailot")
 
         res.status(201).json({ message: "User created successfully." })
     } catch (error) {
@@ -47,8 +48,43 @@ exports.signup = async (req, res) => {
     }
 }
 
+exports.verify = async (req, res) => {
+    const { email, otp } = req.body;
+    try {
+        const user = await prisma.user.findUnique({
+            where: {
+                email
+            }
+        })
+        console.log(user.id)
 
 
+        if (user.otp !== otp) {
+            return res.status(500).json({
+                title: "error",
+                message: "otp did not match."
+            });
+        }
+
+        await prisma.user.update({
+            where: {
+                id: parseInt(user.id)
+            },
+            data: {
+                verified: true
+            }
+        })
+        res.status(201).json({
+            title: "verified",
+            message: `email ${email} verified`,
+            data: user
+        })
+    }
+    catch (err) {
+        console.log(err.message)
+        res.status(500).json({ title: "internal server error" })
+    }
+}
 
 exports.login = async (req, res) => {
     const { email, password } = req.body
