@@ -4,9 +4,17 @@ const prisma = new PrismaClient();
 const md5 = require('md5');
 const { generateToken } = require('../middleware/auth')
 
+
 const { createUser } = require('../services/user.service')
 
+const { generateOtp } = require('../services/otp.service')
+// console.log(generateOtp, 1)
+const { sendSMS } = require('../services/sms.service')
+
+console.log("i am working 1")
 exports.signup = async (req, res) => {
+    console.log("i am working 2")
+
     const { name, phoneNumber, email, password, confirmPassword, role, token } = req.body
     if ((!(name && phoneNumber && email && password && confirmPassword && role))) {
         return res.status(400).json({ message: 'Insufficient Imformation' })
@@ -23,9 +31,15 @@ exports.signup = async (req, res) => {
             password,
             role
         })
+        console.log("i am working 2")
+        sendSMS(generateOtp, phoneNumber)
         res.status(201).json({ message: "User created successfully." })
     } catch (error) {
-        res.status(500).json({ message: "Something Failed! " + error.message })
+        res.status(500).json({
+            message: "Something Failed! " + error.message, data: {
+                otp: generateOtp
+            }
+        })
     }
 }
 

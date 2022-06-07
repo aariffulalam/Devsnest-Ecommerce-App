@@ -15,6 +15,7 @@ module.exports.userExist = async (req, res, next) => {
                 message: "email already resistered  "
             });
         }
+        next()
 
     } catch (error) {
         return res.status(500).json({
