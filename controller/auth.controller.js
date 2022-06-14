@@ -12,15 +12,18 @@ const { generateOtp } = require('../services/otp.service')
 const { sendSMS } = require('../services/sms.service')
 const { sendmail } = require('../services/mail.service')
 
-// console.log("i am working 1")
-exports.signup = async (req, res) => {
-    // console.log("i am working 2")
+const logger = require('../logger/index')
 
-    const { name, phoneNumber, email, password, confirmPassword, role, token } = req.body
+exports.signup = async (req, res) => {
+    logger.info("auth.controller.js file")
+    logger.info("signup")
+    const { name, phoneNumber, email, password, confirmPassword, role } = req.body
     if ((!(name && phoneNumber && email && password && confirmPassword && role))) {
+        logger.warn("Insufficient Imformation")
         return res.status(400).json({ message: 'Insufficient Imformation' })
     }
     if (password != confirmPassword) {
+        logger.warn("Password don't match")
         return res.status(400).json({ message: "Password don't match" })
     }
 
@@ -34,12 +37,15 @@ exports.signup = async (req, res) => {
             role
         })
         // console.log("i am working 2")
+        logger.info("OTP sending")
         await sendSMS(generateOtp, phoneNumber)
         await sendmail(email, generateOtp)
-        console.log("after mailot")
-
+        logger.info("OTP shared successfully")
+        logger.info("User created successfully")
         res.status(201).json({ message: "User created successfully." })
+        logger.info("signUp part completed")
     } catch (error) {
+        logger.error(error.message)
         res.status(500).json({
             message: "Something Failed! " + error.message, data: {
                 otp: generateOtp
@@ -49,6 +55,8 @@ exports.signup = async (req, res) => {
 }
 
 exports.verify = async (req, res) => {
+    logger.info("auth.controller.js file")
+    logger.info("verify")
     const { email, otp } = req.body;
     try {
         const user = await prisma.user.findUnique({
@@ -56,10 +64,9 @@ exports.verify = async (req, res) => {
                 email
             }
         })
-        console.log(user.id)
-
-
+        // console.log(user.id)
         if (user.otp !== otp) {
+            logger.warn("otp did not match")
             return res.status(500).json({
                 title: "error",
                 message: "otp did not match."
@@ -74,19 +81,24 @@ exports.verify = async (req, res) => {
                 verified: true
             }
         })
+        logger.info(`email ${email} verified`)
         res.status(201).json({
             title: "verified",
             message: `email ${email} verified`,
             data: user
         })
+        logger.info("verify part completed")
     }
     catch (err) {
-        console.log(err.message)
+        logger.error(error.message)
+        // console.log(err.message)
         res.status(500).json({ title: "internal server error" })
     }
 }
 
 exports.login = async (req, res) => {
+    logger.info("auth.controller.js file")
+    logger.info("logIn")
     const { email, password } = req.body
     try {
 
@@ -96,16 +108,8 @@ exports.login = async (req, res) => {
             }
         })
         const hashedPassword = md5(password)
-        // console.log(hashedPassword)
-        // console.log(user.password)
-        console.log(hashedPassword === user.password)
-        console.log(user.id)
-        console.log(generateToken(user.id))
         if (hashedPassword === user.password) {
             const token = generateToken(user.id)
-            console.log(token)
-            // console.log(user.password);
-
             const updateToken = await prisma.user.update({
                 where: {
                     id: user.id
@@ -114,27 +118,26 @@ exports.login = async (req, res) => {
                     token
                 }
             })
+            logger.info("Login successfully")
             res.cookie('authToken', token)
             res.status(200).json({ status: "Logedin successfully", updateToken })
         } else {
+            logger.warn("password is wrong")
             res.status(400).json({
                 title: "error",
                 message: "password is wrong."
             })
         }
+        logger.info("login part completed")
     }
     catch (error) {
+        logger.error(error.message)
         res.status(500).json({
             title: "error",
-            message: [1, error.message]
+            message: [error.message]
         })
     }
 }
-
-// exports.verification = async (req, res) => {
-//     const { email, }
-// }
-
 
 
 exports.logout = async (req, res) => {

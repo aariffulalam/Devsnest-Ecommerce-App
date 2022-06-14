@@ -1,0 +1,43 @@
+{"level":"\u001b[32minfo\u001b[39m","message":"initialUserCheck.js file","timestamp":"14-06-2022 02:40:33"}
+{"level":"\u001b[32minfo\u001b[39m","message":"initialUserCheck completed.","timestamp":"14-06-2022 02:40:33"}
+{"level":"\u001b[32minfo\u001b[39m","message":"userExist.js file","timestamp":"14-06-2022 02:40:33"}
+{"level":"\u001b[32minfo\u001b[39m","message":"auth.controller.js file","timestamp":"14-06-2022 02:40:33"}
+{"level":"\u001b[32minfo\u001b[39m","message":"signup","timestamp":"14-06-2022 02:40:33"}
+{"level":"\u001b[33mwarn\u001b[39m","message":"Password don't match","timestamp":"14-06-2022 02:40:33"}
+{"level":"\u001b[32minfo\u001b[39m","message":"userExist completed","timestamp":"14-06-2022 02:40:33"}
+{"level":"\u001b[32minfo\u001b[39m","message":"initialUserCheck.js file","timestamp":"14-06-2022 02:40:43"}
+{"level":"\u001b[32minfo\u001b[39m","message":"initialUserCheck completed.","timestamp":"14-06-2022 02:40:43"}
+{"level":"\u001b[32minfo\u001b[39m","message":"userExist.js file","timestamp":"14-06-2022 02:40:43"}
+{"level":"\u001b[32minfo\u001b[39m","message":"auth.controller.js file","timestamp":"14-06-2022 02:40:43"}
+{"level":"\u001b[32minfo\u001b[39m","message":"signup","timestamp":"14-06-2022 02:40:43"}
+{"level":"\u001b[32minfo\u001b[39m","message":"user.service.js file","timestamp":"14-06-2022 02:40:43"}
+{"level":"\u001b[32minfo\u001b[39m","message":"userExist completed","timestamp":"14-06-2022 02:40:43"}
+{"level":"\u001b[32minfo\u001b[39m","message":"user successfully signedUp","timestamp":"14-06-2022 02:40:43"}
+{"level":"\u001b[32minfo\u001b[39m","message":"user.service completed","timestamp":"14-06-2022 02:40:43"}
+{"level":"\u001b[32minfo\u001b[39m","message":"OTP sending","timestamp":"14-06-2022 02:40:43"}
+{"level":"\u001b[32minfo\u001b[39m","message":"sms.service.js file","timestamp":"14-06-2022 02:40:43"}
+{"level":"\u001b[32minfo\u001b[39m","message":"sms.service.js completed","timestamp":"14-06-2022 02:40:43"}
+{"level":"\u001b[32minfo\u001b[39m","message":"mail.service.js file","timestamp":"14-06-2022 02:40:43"}
+{"level":"\u001b[32minfo\u001b[39m","message":"mail.service.js completed","timestamp":"14-06-2022 02:40:43"}
+{"level":"\u001b[32minfo\u001b[39m","message":"OTP shared successfully","timestamp":"14-06-2022 02:40:43"}
+{"level":"\u001b[32minfo\u001b[39m","message":"User created successfully","timestamp":"14-06-2022 02:40:43"}
+{"level":"\u001b[32minfo\u001b[39m","message":"signUp part completed","timestamp":"14-06-2022 02:40:43"}
+{"level":"\u001b[32minfo\u001b[39m","message":"otp shared to mail","timestamp":"14-06-2022 02:40:47"}
+{"level":"\u001b[32minfo\u001b[39m","message":"initialUserCheck.js file","timestamp":"14-06-2022 02:47:56"}
+{"level":"\u001b[32minfo\u001b[39m","message":"initialUserCheck completed.","timestamp":"14-06-2022 02:47:56"}
+{"level":"\u001b[32minfo\u001b[39m","message":"userExist.js file","timestamp":"14-06-2022 02:47:56"}
+{"level":"\u001b[32minfo\u001b[39m","message":"auth.controller.js file","timestamp":"14-06-2022 02:47:56"}
+{"level":"\u001b[32minfo\u001b[39m","message":"signup","timestamp":"14-06-2022 02:47:56"}
+{"level":"\u001b[32minfo\u001b[39m","message":"user.service.js file","timestamp":"14-06-2022 02:47:56"}
+{"level":"\u001b[32minfo\u001b[39m","message":"userExist completed","timestamp":"14-06-2022 02:47:56"}
+{"level":"\u001b[32minfo\u001b[39m","message":"user successfully signedUp","timestamp":"14-06-2022 02:47:56"}
+{"level":"\u001b[32minfo\u001b[39m","message":"user.service completed","timestamp":"14-06-2022 02:47:56"}
+{"level":"\u001b[32minfo\u001b[39m","message":"OTP sending","timestamp":"14-06-2022 02:47:56"}
+{"level":"\u001b[32minfo\u001b[39m","message":"sms.service.js file","timestamp":"14-06-2022 02:47:56"}
+{"level":"\u001b[32minfo\u001b[39m","message":"sms.service.js completed","timestamp":"14-06-2022 02:47:56"}
+{"level":"\u001b[32minfo\u001b[39m","message":"mail.service.js file","timestamp":"14-06-2022 02:47:56"}
+{"level":"\u001b[32minfo\u001b[39m","message":"mail.service.js completed","timestamp":"14-06-2022 02:47:56"}
+{"level":"\u001b[32minfo\u001b[39m","message":"OTP shared successfully","timestamp":"14-06-2022 02:47:56"}
+{"level":"\u001b[32minfo\u001b[39m","message":"User created successfully","timestamp":"14-06-2022 02:47:56"}
+{"level":"\u001b[32minfo\u001b[39m","message":"signUp part completed","timestamp":"14-06-2022 02:47:56"}
+{"level":"\u001b[32minfo\u001b[39m","message":"otp shared to mail","timestamp":"14-06-2022 02:48:15"}

@@ -1,0 +1,36 @@
+14-06-2022 02:50:19  -  [32minfo[39m:initialUserCheck.js file
+14-06-2022 02:50:19  -  [32minfo[39m:initialUserCheck completed.
+14-06-2022 02:50:19  -  [32minfo[39m:userExist.js file
+14-06-2022 02:50:19  -  [32minfo[39m:auth.controller.js file
+14-06-2022 02:50:19  -  [32minfo[39m:signup
+14-06-2022 02:50:19  -  [32minfo[39m:user.service.js file
+14-06-2022 02:50:19  -  [32minfo[39m:userExist completed
+14-06-2022 02:50:19  -  [32minfo[39m:user successfully signedUp
+14-06-2022 02:50:19  -  [32minfo[39m:user.service completed
+14-06-2022 02:50:19  -  [32minfo[39m:OTP sending
+14-06-2022 02:50:19  -  [32minfo[39m:sms.service.js file
+14-06-2022 02:50:19  -  [32minfo[39m:sms.service.js completed
+14-06-2022 02:50:19  -  [32minfo[39m:mail.service.js file
+14-06-2022 02:50:20  -  [32minfo[39m:mail.service.js completed
+14-06-2022 02:50:20  -  [32minfo[39m:OTP shared successfully
+14-06-2022 02:50:20  -  [32minfo[39m:User created successfully
+14-06-2022 02:50:20  -  [32minfo[39m:signUp part completed
+14-06-2022 02:50:23  -  [32minfo[39m:otp shared to mail
+14-06-2022 02:53:14  -  [32minfo[39m:initialUserCheck.js file
+14-06-2022 02:53:14  -  [32minfo[39m:initialUserCheck completed.
+14-06-2022 02:53:14  -  [32minfo[39m:userExist.js file
+14-06-2022 02:53:14  -  [32minfo[39m:auth.controller.js file
+14-06-2022 02:53:14  -  [32minfo[39m:signup
+14-06-2022 02:53:14  -  [32minfo[39m:user.service.js file
+14-06-2022 02:53:14  -  [32minfo[39m:userExist completed
+14-06-2022 02:53:14  -  [32minfo[39m:user successfully signedUp
+14-06-2022 02:53:14  -  [32minfo[39m:user.service completed
+14-06-2022 02:53:14  -  [32minfo[39m:OTP sending
+14-06-2022 02:53:14  -  [32minfo[39m:sms.service.js file
+14-06-2022 02:53:14  -  [32minfo[39m:sms.service.js completed
+14-06-2022 02:53:14  -  [32minfo[39m:mail.service.js file
+14-06-2022 02:53:14  -  [32minfo[39m:mail.service.js completed
+14-06-2022 02:53:14  -  [32minfo[39m:OTP shared successfully
+14-06-2022 02:53:14  -  [32minfo[39m:User created successfully
+14-06-2022 02:53:14  -  [32minfo[39m:signUp part completed
+14-06-2022 02:53:17  -  [32minfo[39m:otp shared to mail

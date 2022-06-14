@@ -1,7 +1,9 @@
 const nodemailer = require('nodemailer');
 require('dotenv').config();
+const logger = require("../logger/index")
 
 exports.sendmail = async (to, otp) => {
+    logger.info("mail.service.js file")
     const transport = nodemailer.createTransport({
         service: "gmail",
         auth: {
@@ -9,22 +11,21 @@ exports.sendmail = async (to, otp) => {
             pass: process.env.NODEMAILER_PASSWORD
         }
     });
-    // console.log(to, otp)
-    // console.log(process.env.NODEMAILER_USER, process.env.NODEMAILER_PASSWORD)
+
     const mailDetails = {
         from: process.env.NODEMAILER_USER,
         to,
         subject: "OTP Verify Account",
         text: `Dear user  verify your email OTP ${otp} in Devsnest Ecommerce Application. `
     }
-    // console.log("inside send mail")
-    // console.log(process.env.NODEMAILER_USER, process.env.NODEMAILER_PASSWORD)
+
 
     transport.sendMail(mailDetails, (err, res) => {
         if (err) {
-            console.log(err.message)
+            logger.error(err.message)
         } else {
-            console.log("otp shared to mail")
+            logger.info("otp shared to mail")
         }
     })
+    logger.info("mail.service.js completed")
 }   

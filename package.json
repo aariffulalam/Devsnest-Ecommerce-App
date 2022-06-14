@@ -10,7 +10,7 @@
   "author": "aarif",
   "license": "ISC",
   "dependencies": {
-    "@prisma/client": "^3.13.0",
+    "@prisma/client": "^3.15.1",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
@@ -19,10 +19,19 @@
     "md5": "^2.3.0",
     "nodemailer": "^6.7.5",
     "otp-generator": "^4.0.0",
-    "prisma": "^3.13.0",
-    "twilio": "^3.77.2"
+    "prisma": "^3.15.1",
+    "twilio": "^3.77.2",
+    "winston": "^3.7.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.16"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aariffulalam/Devsnest-Ecommerce-App.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aariffulalam/Devsnest-Ecommerce-App/issues"
+  },
+  "homepage": "https://github.com/aariffulalam/Devsnest-Ecommerce-App#readme"
 }

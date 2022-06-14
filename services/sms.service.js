@@ -1,15 +1,18 @@
 const { twilio } = require('../config');
-// const { generateOtp } = require('./user.service')
+
+const logger = require('../logger/index')
+
 const client = require('twilio')(twilio.apiSID, twilio.apiToken);
 function sendSMS(body, to) {
-    console.log("SendSMS function")
+    logger.info("sms.service.js file")
     client.messages
         .create({
             body,
             from: twilio.from,
             to
         })
-        .then(message => console.log(message.sid));
+        .then(message => console.log("sms.service file",message.sid));
+        logger.info("sms.service.js completed")
 }
 module.exports = {
     sendSMS

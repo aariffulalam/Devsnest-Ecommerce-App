@@ -25,4 +25,5 @@ router.get('/login', initialLoginCheck, login)
 router.get('/logout', verifyToken, logout)
 
 
-module.exports = router;
+module.exports = router;    // console.log("inside send mail")
+// console.log(process.env.NODEMAILER_USER, process.env.NODEMAILER_PASSWORD)

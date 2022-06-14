@@ -1,10 +1,14 @@
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient();
 
+const logger = require("../logger/index")
+
 exports.verifyUserCheck = async (req, res, next) => {
+    logger.info("verifyUserCheck.js file")
     const { email, otp } = req.body
     try {
         if (typeof email !== "string" || typeof otp !== "string") {
+            logger.wanr("Type of email and otp is not valid.")
             return res.status(400).json({
                 title: "error",
                 message: "Type of email and otp is not valid."
@@ -19,6 +23,7 @@ exports.verifyUserCheck = async (req, res, next) => {
         })
 
         if (userCount === 0) {
+            logger.warn("user not exist.")
             return res.status(400).json({
                 title: "error",
                 message: "user not exist."
@@ -32,6 +37,7 @@ exports.verifyUserCheck = async (req, res, next) => {
             }
         });
         if (user.verified === true) {
+            logger.warn("user already verified")
             return res.status(400).json({
                 title: "error",
                 message: "user already verified."
@@ -40,10 +46,11 @@ exports.verifyUserCheck = async (req, res, next) => {
         next()
     }
     catch (error) {
-        // console.log(error.message)
+        logger.error(error.message)
         res.status(500).json({
             title: " error",
             message: error.message
         });
     }
+    logger.info("verifyUserCheck completed")
 }

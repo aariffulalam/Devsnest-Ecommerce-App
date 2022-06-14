@@ -3,11 +3,14 @@ const prisma = new PrismaClient();
 
 const { isValidEmail } = require("../validation/email.validation");
 
+const logger = require('../logger/index')
+
 exports.initialLoginCheck = async (req, res, next) => {
+    logger.info("initilLoginCheck.js file")
     const { email, password } = req.body;
-    // console.log("hello i am working.")
 
     if (typeof email !== "string" || typeof password !== "string") {
+        logger.warn("Type of email and otp is not valid")
         return res.status(400).json({
             title: "error",
             message: "Type of email and otp is not valid."
@@ -15,6 +18,7 @@ exports.initialLoginCheck = async (req, res, next) => {
     }
     // console.log(isValidEmail(email))
     if (!(isValidEmail(email))) {
+        logger.warn("invalid email")
         return res.status(400).json({
             title: "error",
             message: "invalid email."
@@ -29,6 +33,7 @@ exports.initialLoginCheck = async (req, res, next) => {
     })
     // console.log(userCount)
     if (userCount === 0) {
+        logger.warn("user not exist")
         return res.status(400).json({
             title: "error",
             message: "user not exist."
@@ -41,12 +46,13 @@ exports.initialLoginCheck = async (req, res, next) => {
             email
         }
     });
-    // console.log(user.verified === false)
     if (user.verified === false) {
+        logger.warn("user is not verified")
         return res.status(400).json({
             title: "error",
             message: "user is not  verified."
         })
     }
+    logger.info("initialLoginCheck completed")
     next()
 }
