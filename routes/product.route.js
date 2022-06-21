@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const {upload} = require('../middleware/productImage')
 
 const { products, productgetbyid, getproductbysellerid, postproduct, updateproduct, editproduct, deleteproduct } = require('../controller/product.controller')
 
@@ -8,7 +9,7 @@ router.get('/:id', productgetbyid)
 
 router.get('/seller/:sellerId', getproductbysellerid)
 
-router.post('/', postproduct)
+router.post('/:id', upload.array("photos") ,postproduct)
 
 router.put('/:id', updateproduct)
 

@@ -60,20 +60,22 @@ exports.getproductbysellerid = async (req, res) => {
 
 exports.postproduct = async (req, res) => {
     try {
-        const { sellerId } = req.params
-        const { name, price, description, productImages, isDiscounted, discountPrice, category, inStock } = req.body
+        const { id } = req.params
+        // console.log(req.files)
+        const imagesPath = req.files.map((file)=>{
+            return file.path
+        })
+        // console.log(typeof(parseInt(id)))
+        const { name, price, description, photos, category } = req.body
         const postProduct = await prisma.product.create(
             {
                 data: {
                     name,
-                    price,
+                    price:parseInt(price),
                     description,
-                    productImages,
-                    isDiscounted,
-                    discountPrice,
+                    photos:imagesPath,
                     category,
-                    inStock,
-                    sellerId: parseInt(sellerId)
+                    sellerId: parseInt(id)
                 }
             }
         )
